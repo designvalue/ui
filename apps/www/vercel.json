@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "cd ../.. && pnpm install --no-frozen-lockfile && cd packages/shadcn && pnpm install --include=dev && npx tsup && cd ../../apps/www && pnpm run build:registry && next build",
+  "buildCommand": "cd ../.. && pnpm install --no-frozen-lockfile && cd apps/www && pnpm run build:registry && next build",
   "outputDirectory": "apps/www/.next",
   "installCommand": "cd ../.. && pnpm install --no-frozen-lockfile",
   "framework": "nextjs",
