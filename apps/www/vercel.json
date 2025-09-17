@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "buildCommand": "cd ../.. && pnpm --filter=www build",
+  "buildCommand": "cd ../.. && pnpm install && pnpm --filter=shadcn build && cd apps/www && pnpm run build:registry && pnpm run build",
   "outputDirectory": ".next",
-  "installCommand": "cd ../.. && pnpm install",
+  "installCommand": "echo 'Skipping install, handled in buildCommand'",
+  "framework": "nextjs",
   "ignoreCommand": "git diff --quiet HEAD^ HEAD -- .",
-  "framework": "nextjs"
+  "functions": {
+    "app/**": {
+      "maxDuration": 30
+    }
+  }
 }
