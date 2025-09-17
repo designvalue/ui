@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "contentlayer2 build && pnpm build:registry && next build",
-    "build:registry": "tsc --project ./tsconfig.scripts.json && node ./scripts/build-registry.js && prettier --loglevel silent --write \"registry/**/*.{ts,tsx,mdx}\" --cache",
+    "build:registry": "tsx ./scripts/build-registry.mts && prettier --loglevel silent --write \"registry/**/*.{ts,tsx,mdx}\" --cache",
     "dev": "concurrently \"contentlayer2 dev\" \"next dev --port 3333\"",
     "start": "next start --port 3333",
     "lint": "next lint",
@@ -104,7 +104,8 @@
     "use-sync-external-store": "^1.2.2",
     "usehooks-ts": "^3.1.0",
     "vaul": "^1.1.1",
-    "zod": "^3.24.1"
+    "zod": "^3.24.1",
+    "typescript": "^5.9.2"
   },
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.4.4",

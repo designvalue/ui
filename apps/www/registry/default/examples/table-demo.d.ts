@@ -1,2 +1,2 @@
-export default function TableDemo(): import("react").JSX.Element;
+export default function TableDemo(): import("react").JSX.Element
 //# sourceMappingURL=table-demo.d.ts.map

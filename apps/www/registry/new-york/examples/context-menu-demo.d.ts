@@ -1,2 +1,2 @@
-export default function ContextMenuDemo(): import("react").JSX.Element;
+export default function ContextMenuDemo(): import("react").JSX.Element
 //# sourceMappingURL=context-menu-demo.d.ts.map

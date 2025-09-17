@@ -1,2 +1,2 @@
-export default function AspectRatioDemo(): import("react").JSX.Element;
+export default function AspectRatioDemo(): import("react").JSX.Element
 //# sourceMappingURL=aspect-ratio-demo.d.ts.map

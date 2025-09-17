@@ -1,2 +1,2 @@
-export default function DefaultStyle(): null;
+export default function DefaultStyle(): null
 //# sourceMappingURL=index.d.ts.map

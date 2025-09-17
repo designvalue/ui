@@ -1,2 +1,2 @@
-export declare function LabelDemo(): import("react").JSX.Element;
+export declare function LabelDemo(): import("react").JSX.Element
 //# sourceMappingURL=label-demo.d.ts.map

@@ -1,2 +1,2 @@
-export declare function AlertDemo(): import("react").JSX.Element;
+export declare function AlertDemo(): import("react").JSX.Element
 //# sourceMappingURL=alert-demo.d.ts.map
