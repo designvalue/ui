@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "cd ../.. && pnpm install --frozen-lockfile && pnpm --filter=shadcn build && cd apps/www && pnpm run build:registry && pnpm run build",
+  "buildCommand": "cd ../.. && pnpm install --frozen-lockfile && pnpm --filter=shadcn build && cd apps/www && contentlayer2 build && pnpm run build:registry && next build",
   "outputDirectory": ".next",
-  "installCommand": "echo 'Dependencies installed in buildCommand'",
+  "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
   "framework": "nextjs",
   "ignoreCommand": "git diff --quiet HEAD^ HEAD -- .",
   "functions": {
