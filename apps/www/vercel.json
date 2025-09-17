@@ -1,15 +1,8 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/"
-    }
-  ]
+  "buildCommand": "cd ../.. && pnpm --filter=www build",
+  "outputDirectory": ".next",
+  "installCommand": "cd ../.. && pnpm install",
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- .",
+  "framework": "nextjs"
 }
