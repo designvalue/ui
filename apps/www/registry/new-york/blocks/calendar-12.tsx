@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { type DateRange } from "react-day-picker"
-import { enUS, es } from "react-day-picker/locale"
+import { enUS, es } from "react-day-picker/dist/cjs/locale.js"
 
 import { Calendar } from "@/registry/new-york/ui/calendar"
 import {
