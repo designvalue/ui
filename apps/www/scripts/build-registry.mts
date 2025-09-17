@@ -2,7 +2,7 @@ import { exec } from "child_process"
 import { existsSync, promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
-import template from "lodash/template"
+import template from "lodash/template.js"
 import { rimraf } from "rimraf"
 import {
   Registry,
@@ -13,12 +13,12 @@ import {
 import { Project, ScriptKind } from "ts-morph"
 import { z } from "zod"
 
-import { registry } from "../registry"
-import { baseColors, baseColorsV4 } from "../registry/registry-base-colors"
-import { registryCategories } from "../registry/registry-categories"
-import { colorMapping, colors } from "../registry/registry-colors"
-import { iconLibraries, icons } from "../registry/registry-icons"
-import { styles } from "../registry/registry-styles"
+import { registry } from "../registry/index.js"
+import { baseColors, baseColorsV4 } from "../registry/registry-base-colors.js"
+import { registryCategories } from "../registry/registry-categories.js"
+import { colorMapping, colors } from "../registry/registry-colors.js"
+import { iconLibraries, icons } from "../registry/registry-icons.js"
+import { styles } from "../registry/registry-styles.js"
 import { fixImport } from "./fix-import.mts"
 
 const REGISTRY_PATH = path.join(process.cwd(), "public/r")

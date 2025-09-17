@@ -2,9 +2,10 @@
   "name": "www",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "contentlayer2 build && pnpm build:registry && next build",
-    "build:registry": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --loglevel silent --write \"registry/**/*.{ts,tsx,mdx}\" --cache",
+    "build:registry": "tsc --project ./tsconfig.scripts.json && node ./scripts/build-registry.js && prettier --loglevel silent --write \"registry/**/*.{ts,tsx,mdx}\" --cache",
     "dev": "concurrently \"contentlayer2 dev\" \"next dev --port 3333\"",
     "start": "next start --port 3333",
     "lint": "next lint",
@@ -89,8 +90,8 @@
     "rehype-pretty-code": "^0.14.0",
     "rehype-slug": "^6.0.0",
     "remark": "^15.0.1",
-    "remark-gfm": "^4.0.0",
     "remark-code-import": "^1.2.0",
+    "remark-gfm": "^4.0.0",
     "rimraf": "^4.1.3",
     "shadcn": "workspace:*",
     "shiki": "^1.24.2",
@@ -118,6 +119,7 @@
     "postcss": "^8.5.6",
     "prettier": "^2.8.8",
     "tailwindcss": "^3.4.6",
+    "ts-node": "^10.9.2",
     "tsx": "^4.20.3",
     "typescript": "^5.9.2"
   }

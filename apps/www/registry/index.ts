@@ -1,14 +1,14 @@
 import { type Registry } from "shadcn/schema"
 import { z } from "zod"
 
-import { blocks } from "@/registry/registry-blocks"
-import { charts } from "@/registry/registry-charts"
-import { examples } from "@/registry/registry-examples"
-import { hooks } from "@/registry/registry-hooks"
-import { internal } from "@/registry/registry-internal"
-import { lib } from "@/registry/registry-lib"
-import { themes } from "@/registry/registry-themes"
-import { ui } from "@/registry/registry-ui"
+import { blocks } from "./registry-blocks.js"
+import { charts } from "./registry-charts.js"
+import { examples } from "./registry-examples.js"
+import { hooks } from "./registry-hooks.js"
+import { internal } from "./registry-internal.js"
+import { lib } from "./registry-lib.js"
+import { themes } from "./registry-themes.js"
+import { ui } from "./registry-ui.js"
 
 export const registry = {
   name: "shadcn/ui",

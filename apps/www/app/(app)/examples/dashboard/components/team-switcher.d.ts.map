@@ -1,0 +1,1 @@
+{"version":3,"file":"team-switcher.d.ts","sourceRoot":"","sources":["team-switcher.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAA;AA8B9B,OAAO,EAGL,cAAc,EACf,MAAM,gCAAgC,CAAA;AAoCvC,KAAK,mBAAmB,GAAG,KAAK,CAAC,wBAAwB,CAAC,OAAO,cAAc,CAAC,CAAA;AAEhF,UAAU,iBAAkB,SAAQ,mBAAmB;CAAG;AAE1D,MAAM,CAAC,OAAO,UAAU,YAAY,CAAC,EAAE,SAAS,EAAE,EAAE,iBAAiB,qBAqIpE"}

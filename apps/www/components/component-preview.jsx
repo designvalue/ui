@@ -1,0 +1,105 @@
+"use client";
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+import * as React from "react";
+import Image from "next/image";
+import { Index } from "@/__registry__";
+import { cn } from "@/lib/utils";
+import { useConfig } from "@/hooks/use-config";
+import { CopyButton } from "@/components/copy-button";
+import { Icons } from "@/components/icons";
+import { StyleSwitcher } from "@/components/style-switcher";
+import { ThemeWrapper } from "@/components/theme-wrapper";
+import { V0Button } from "@/components/v0-button";
+import { Tabs, TabsContent, TabsList, TabsTrigger, } from "@/registry/new-york/ui/tabs";
+import { styles } from "@/registry/registry-styles";
+export function ComponentPreview(_a) {
+    var name = _a.name, type = _a.type, children = _a.children, className = _a.className, extractClassname = _a.extractClassname, extractedClassNames = _a.extractedClassNames, _b = _a.align, align = _b === void 0 ? "center" : _b, description = _a.description, _c = _a.hideCode, hideCode = _c === void 0 ? false : _c, props = __rest(_a, ["name", "type", "children", "className", "extractClassname", "extractedClassNames", "align", "description", "hideCode"]);
+    var config = useConfig()[0];
+    var index = styles.findIndex(function (style) { return style.name === config.style; });
+    var Codes = React.Children.toArray(children);
+    var Code = Codes[index];
+    var Preview = React.useMemo(function () {
+        var _a;
+        var Component = (_a = Index[config.style][name]) === null || _a === void 0 ? void 0 : _a.component;
+        if (!Component) {
+            return (<p className="text-sm text-muted-foreground">
+          Component{" "}
+          <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
+            {name}
+          </code>{" "}
+          not found in registry.
+        </p>);
+        }
+        return <Component />;
+    }, [name, config.style]);
+    var codeString = React.useMemo(function () {
+        var _a, _b;
+        if (typeof (Code === null || Code === void 0 ? void 0 : Code.props["data-rehype-pretty-code-fragment"]) !== "undefined") {
+            var Button = React.Children.toArray(Code.props.children)[0];
+            return ((_a = Button === null || Button === void 0 ? void 0 : Button.props) === null || _a === void 0 ? void 0 : _a.value) || ((_b = Button === null || Button === void 0 ? void 0 : Button.props) === null || _b === void 0 ? void 0 : _b.__rawString__) || null;
+        }
+    }, [Code]);
+    if (type === "block") {
+        return (<div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border">
+        <Image src={"/r/styles/".concat(config.style, "/").concat(name, "-light.png")} alt={name} width={1440} height={900} className="absolute left-0 top-0 z-20 w-[970px] max-w-none bg-background dark:hidden sm:w-[1280px] md:hidden md:dark:hidden"/>
+        <Image src={"/r/styles/".concat(config.style, "/").concat(name, "-dark.png")} alt={name} width={1440} height={900} className="absolute left-0 top-0 z-20 hidden w-[970px] max-w-none bg-background dark:block sm:w-[1280px] md:hidden md:dark:hidden"/>
+        <div className="absolute inset-0 hidden w-[1600px] bg-background md:block">
+          <iframe src={"/view/styles/".concat(config.style, "/").concat(name)} className="size-full"/>
+        </div>
+      </div>);
+    }
+    return (<div className={cn("group relative my-4 flex flex-col space-y-2", className)} {...props}>
+      <Tabs defaultValue="preview" className="relative mr-auto w-full">
+        <div className="flex items-center justify-between pb-3">
+          {!hideCode && (<TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
+              <TabsTrigger value="preview" className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none">
+                Preview
+              </TabsTrigger>
+              <TabsTrigger value="code" className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none">
+                Code
+              </TabsTrigger>
+            </TabsList>)}
+        </div>
+        <TabsContent value="preview" className="relative rounded-md border">
+          <div className="flex items-center justify-between p-4">
+            <StyleSwitcher />
+            <div className="flex items-center gap-2">
+              {description ? <V0Button name={name}/> : null}
+              <CopyButton value={codeString} variant="outline" className="h-7 w-7 text-foreground opacity-100 hover:bg-muted hover:text-foreground [&_svg]:h-3.5 [&_svg]:w-3.5"/>
+            </div>
+          </div>
+          <ThemeWrapper defaultTheme="zinc">
+            <div className={cn("preview flex min-h-[350px] w-full justify-center p-10", {
+            "items-center": align === "center",
+            "items-start": align === "start",
+            "items-end": align === "end",
+        })}>
+              <React.Suspense fallback={<div className="flex w-full items-center justify-center text-sm text-muted-foreground">
+                    <Icons.spinner className="mr-2 h-4 w-4 animate-spin"/>
+                    Loading...
+                  </div>}>
+                {Preview}
+              </React.Suspense>
+            </div>
+          </ThemeWrapper>
+        </TabsContent>
+        <TabsContent value="code">
+          <div className="flex flex-col space-y-4">
+            <div className="w-full rounded-md [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">
+              {Code}
+            </div>
+          </div>
+        </TabsContent>
+      </Tabs>
+    </div>);
+}

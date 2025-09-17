@@ -2,7 +2,7 @@ import { existsSync, promises as fs } from "fs"
 import path from "path"
 import puppeteer from "puppeteer"
 
-import { getAllBlockIds } from "../lib/blocks"
+import { getAllBlockIds } from "../lib/blocks.js"
 
 const REGISTRY_PATH = path.join(process.cwd(), "public/r")
 
@@ -11,7 +11,7 @@ const REGISTRY_PATH = path.join(process.cwd(), "public/r")
 // ----------------------------------------------------------------------------
 async function captureScreenshots() {
   const blockIds = await getAllBlockIds()
-  const blocks = blockIds.filter((block) => {
+  const blocks = blockIds.filter((block: string) => {
     // Check if screenshots already exist
     const lightPath = path.join(
       REGISTRY_PATH,
