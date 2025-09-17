@@ -1,5 +1,5 @@
 import * as React from "react"
-import Image from "next/image"
+import Image from "next/image.js"
 
 import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
 

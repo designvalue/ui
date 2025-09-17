@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/image.js"
 
 import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio"
 
