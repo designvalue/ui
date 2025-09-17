@@ -1,13 +1,16 @@
 {
   "version": 2,
-  "buildCommand": "cd ../.. && pnpm install && pnpm --filter=shadcn build && cd apps/www && pnpm run build:registry && pnpm run build",
+  "buildCommand": "cd ../.. && pnpm install --frozen-lockfile && pnpm --filter=shadcn build && cd apps/www && pnpm run build:registry && pnpm run build",
   "outputDirectory": ".next",
-  "installCommand": "echo 'Skipping install, handled in buildCommand'",
+  "installCommand": "echo 'Dependencies installed in buildCommand'",
   "framework": "nextjs",
   "ignoreCommand": "git diff --quiet HEAD^ HEAD -- .",
   "functions": {
     "app/**": {
       "maxDuration": 30
     }
+  },
+  "env": {
+    "SKIP_ENV_VALIDATION": "1"
   }
 }
